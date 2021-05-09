@@ -1,38 +1,165 @@
-.App {
+/*
+=============== 
+Variables
+===============
+*/
+
+:root {
+  --clr-1: #99d5c9;
+  --clr-2: #6c969d;
+  --clr-3: #645e9d;
+  --clr-4: #392b58;
+  --clr-5: #2d0320;
+}
+/*
+=============== 
+Global Styles
+===============
+*/
+
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: var(--clr-1);
+}
+
+input {
+  width: 80%;
+  height: 40px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+/* 
+=============
+Class based Styles
+=============
+*/
+
+.create {
+  padding: 10px;
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+  background-color: var(--clr-3);
+  margin-top: 6rem;
+  border-radius: 10px;
+}
+.create button {
+  width: 20%;
+  display: block;
+  height: 30px;
+  margin: 5px auto 0 auto;
+  border-radius: 10px;
+}
+.create .back {
+  width: 20%;
+  height: 30px;
+  font-size: 20px;
+  letter-spacing: 5px;
+  text-decoration: none;
+  color: gray;
+  background-color: var(--clr-5);
+  display: block;
+  margin: 5px auto;
+  border-radius: 10px;
+}
+.dob {
+  color: whitesmoke;
+}
+.dob input {
+  width: 65%;
+}
+
+.name {
+  width: 40%;
+}
+
+/* Home */
+.home {
+  width: 50%;
+  background: var(--clr-3);
+  margin: 3rem auto;
+  padding: 10px;
+  text-align: center;
+  border-radius: 10px;
+}
+.home input {
+  display: block;
+  margin: 10px auto;
+  width: 70%;
+  height: 30px;
+}
+.home button {
+  margin: 5px;
+  width: 10%;
+  height: 25px;
+  color: white;
+  background-color: var(--clr-4);
+}
+.home button:hover {
+  background-color: var(--clr-5);
+}
+.new-contact {
+  width: fit-content;
+  padding: 3px;
+  width: 30px;
+}
+
+/* Person */
+.person {
+  width: 90%;
+  background-color: white;
+  border-radius: 10px;
+  margin: 5px auto;
+  padding: 5px;
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+.person-btn button {
+  display: block;
+  width: 50%;
+  margin: 5px auto;
+}
+.image {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-color: var(--clr-5);
+  color: white;
+  text-transform: uppercase;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 3px;
+}
+/* Error */
+.error {
+  width: 50%;
+  margin: 7rem auto;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+/* responsiveness */
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@media screen and (max-width: 480px) {
+  .create {
+    width: 90%;
+  }
+}
+@media screen and (max-width: 480px) {
+  .create {
+    width: 60%;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+@media screen and (max-width: 720px) {
+  .create {
+    width: 40%;
   }
 }
