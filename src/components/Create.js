@@ -1,15 +1,16 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-const Create = ({ dispatch }) => {
+const Create = ({ phoneBook, dispatch }) => {
   const [firstName, setFirstName] = useState('')
-  const [lastName, setLasttName] = useState('')
+  const [lastName, setLastName] = useState('')
   const [phoneNum, setPhoneNum] = useState('')
   const [dob, setDob] = useState('')
   const [email, setEmail] = useState('')
   const [occupation, setOccupation] = useState('')
   const [designation, setDesignation] = useState('')
+  const [modal, setModal] = useState('')
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -25,12 +26,36 @@ const Create = ({ dispatch }) => {
         designation,
         fav: false,
       }
-      dispatch({ type: 'CREATE_NEW', payload: newPerson })
+      let temp = phoneBook.find(
+        (item) => item.firstName === firstName && item.lastName === lastName
+      )
+      if (!temp) {
+        dispatch({ type: 'CREATE_NEW', payload: newPerson })
+        setModal('created contact')
+      } else {
+        setModal('contact already exist')
+      }
     }
+
+    setFirstName('')
+    setLastName('')
+    setPhoneNum('')
+    setDob('')
+    setEmail('')
+    setOccupation('')
+    setDesignation('')
   }
+  useEffect(() => {
+    if (modal) {
+      setTimeout(() => {
+        setModal('')
+      }, 1500)
+    }
+  }, [modal])
 
   return (
     <div className="create">
+      <p style={{ color: 'white' }}>{modal}</p>
       <form
         onSubmit={(e) => {
           handleSubmit(e)
@@ -48,7 +73,7 @@ const Create = ({ dispatch }) => {
           type="text"
           placeholder="Last Name"
           value={lastName}
-          onChange={(e) => setLasttName(e.target.value)}
+          onChange={(e) => setLastName(e.target.value)}
         />
         <input
           type="number"
@@ -93,7 +118,7 @@ const Create = ({ dispatch }) => {
   )
 }
 const mapStateToProps = (state) => {
-  return {}
+  return { phoneBook: state.phoneBook }
 }
 
 export default connect(mapStateToProps)(Create)
